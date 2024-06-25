@@ -1,0 +1,18 @@
+[package]
+name = "corewar"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+argparse = "0.2.2"
+cursive = "0.20.0"
+json = "0.12.4"
+
+[[bin]]
+name = "asm"
+path = "src/asm/main.rs"
+
+[[bin]]
+name = "corewar"
+path = "src/corewar/main.rs"
+
