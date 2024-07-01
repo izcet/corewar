@@ -1,0 +1,5 @@
+multi-core evaluation
+addition of register operations similar to RISC evaluation rather than CISC
+change the time to evaluate instructions so there are time tradeoffs/penalties in parallel
+different-sized instructions (+ memory alignment? memory remap instructions?)
+

@@ -10,9 +10,12 @@ json = "0.12.4"
 
 [[bin]]
 name = "asm"
-path = "src/asm/main.rs"
+path = "src/bin/asm/main.rs"
 
 [[bin]]
 name = "corewar"
-path = "src/corewar/main.rs"
+path = "src/bin/corewar/main.rs"
 
+[lib]
+name = "redcode"
+path = "src/lib/redcode.rs"
