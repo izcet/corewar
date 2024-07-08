@@ -1,20 +1,28 @@
 // modifiers
-.a	// a -> a
-.b  // b -> b
-.ab // a -> b
-.ba // b -> a
-.f  // a and b -> a and b 
-.x  // a and b -> b and a
-.i  // whole instruction -> whole instruction for mov seq and sne
+"00"  	// no modifier -- default for instruction
+"01"	.a	// a -> a
+"02"	.b  // b -> b
+"03"	.ab // a -> b
+"04"	.ba // b -> a
+"05"	.f  // a and b -> a and b 
+"06"	.x  // a and b -> b and a
+"07"	.i  // whole instruction -> whole instruction for mov seq and sne
 
-// forget about registers for now
-.ar // a -> register
-.br // b -> register
-.ra // register -> a
-.rb // register -> b
-.fr // a and b -> register
-.fx // a and b -> regester (b and a)
-.
+// custom modifiers
+"08"	.m  // m -> m
+"09"	.am // a -> m
+"0A"	.bm // b -> m
+"0B"	.ma // m -> a
+"0C"	.mb // m -> b
+"0D"	.o  // o -> o
+"0E"	.ao // a -> o
+"0F"	.bo // b -> o
+"10"	.oa // o -> a
+"11"	.ob // o -> b
+"12"	.mf // m,a,b -> m,a,b
+"13"	.fm // m,a,b -> a,b,m
+"14"	.y  // o,m,a,b -> a,b,o,m
+
 
 // addressing modes
 '#' immediate // address of 0, 
@@ -49,18 +57,11 @@ FF -- -- -- -- -- -- --
 // does not increment the program counter
 // addressing modes are done as normal
 
-01 mov // move copies data
-// default modifier is .i
-
-02 add // arithmetic addition
-// default is .ab
-// .i is same as .f
-
-03 sub // arithmetic subtraction
-// default is .ab
-
-04 mul // arithmetic multiplication
-05 div // arithmetic division
+01 mov .i // move copies data
+02 add .ab // arithmetic addition, .i is same as .f
+03 sub .ab // arithmetic subtraction, .i same as .f
+04 mul .ab // arithmetic multiplication, .i same as .f
+05 div .ab // arithmetic division, floor, b / a, div/0 illegal
 06 mod // arithmetic modulo
 07 jmp // jump
 08 jmz // jump if zero
@@ -71,19 +72,14 @@ FF -- -- -- -- -- -- --
 0D sne // skip if not equal
 0E slt // skip if less than
 0F spl // split
-
-// borrowed from 42 variant
-11 liv // "live" -- not implemented, equivalent to NOP
 12 and // bitwise and
 13 bor // bitwise or
 14 xor // bitwise xor
 15 not // bitwise not
-16 ldi // load into register
-17 sti // set from register
+xx ldp
+yy stp
 
-// dare I dream a little?
-
-
+/*
 opcode
 |
 |  opcode modifier
@@ -105,14 +101,5 @@ xx xx xx xx xx xx xx xx
 PC has
 1 64-bit current instruction
 xx xx xx xx xx xx xx xx
-1 carry flag
-1 8-bit 
-xx xx xx xx xx xx xx xx
-4 32-bit registers
-xx xx xx xx xx xx xx xx
-xx xx xx xx xx xx xx xx
-4 64-bit registers
-xx xx xx xx xx xx xx xx
-xx xx xx xx xx xx xx xx
-xx xx xx xx xx xx xx xx
-xx xx xx xx xx xx xx xx
+
+*/
