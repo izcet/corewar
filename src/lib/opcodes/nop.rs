@@ -1,6 +1,6 @@
 //mod opcodes;
 
-pub fn nop() -> u8 {
+pub fn nopf() -> u8 {
     return 0;
 }
 
@@ -11,7 +11,7 @@ mod tests {
 	#[test]
 	fn validate_nop() {
 		let expected = 0;
-		let actual = nop();
+		let actual = nopf();
 		assert_eq!(actual, expected)
 	}
 }
